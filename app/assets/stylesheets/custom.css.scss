@@ -1,0 +1,26 @@
+@import url(https://fonts.googleapis.com/css?family=Aladin);
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+$body-bg:                                   #ecf0f1;
+$font-family-sans-serif:                    'Lato', sans-serif;
+$navbar-inverse-bg:                         white;
+$navbar-inverse-brand-color:                #c0392b;
+$navbar-inverse-brand-hover-color:          #2c3e50;
+$navbar-inverse-link-color:                 #2c3e50;
+$navbar-inverse-link-hover-color:           #bdc3c7;
+$brand-primary:                             #c0392b;
+$jumbotron-bg:                              white;
+$navbar-height:                             45px;
+$navbar-inverse-toggle-icon-bar-bg:         #c0392b;;
+$navbar-inverse-toggle-border-color:        #c0392b;
+@import "bootstrap-sprockets";
+@import "bootstrap"; 
+
+.jumbotron {
+	text-align: center;
+}
+#logo {
+	font-weight: bold;
+	font-size: 30px;
+	font-family: 'Aladin', cursive;
+}
