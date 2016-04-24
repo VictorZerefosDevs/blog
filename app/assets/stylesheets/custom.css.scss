@@ -15,6 +15,8 @@ $navbar-inverse-toggle-icon-bar-bg:         #c0392b;;
 $navbar-inverse-toggle-border-color:        #c0392b;
 @import "bootstrap-sprockets";
 @import "bootstrap"; 
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 .jumbotron {
 	text-align: center;
