@@ -1,5 +1,7 @@
 class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
 
  
   def index
@@ -12,7 +14,7 @@ class PinsController < ApplicationController
 
 
   def new
-    @pin = Pin.new
+    @pin = current_user.pins.build
   end
 
   def edit
@@ -20,7 +22,7 @@ class PinsController < ApplicationController
 
 
   def create
-    @pin = Pin.new(pin_params)
+    @pin = current_user.pins.build(pin_params)
 
   
       if @pin.save
@@ -45,10 +47,7 @@ class PinsController < ApplicationController
   
   def destroy
     @pin.destroy
-    respond_to do |format|
-      format.html { redirect_to pins_url, notice: 'Pin was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to pins_url, notice: 'Pin was successfully destroyed.'    
   end
 
   private
@@ -56,9 +55,12 @@ class PinsController < ApplicationController
     def set_pin
       @pin = Pin.find(params[:id])
     end
-
+    def correct_user 
+      @pin = current_user.pins.find_by(id: params[:id])
+      redirect_to pins_path, notice: 'Você deve estar logado para essa ação' if @pin.nil? 
+    end
     
     def pin_params
-      params.require(:pin).permit(:description)
+      params.require(:pin).permit(:description, :user_id)
     end
 end
