@@ -20,7 +20,6 @@ class PinsController < ApplicationController
   def edit
   end
 
-
   def create
     @pin = current_user.pins.build(pin_params)
 
@@ -61,6 +60,6 @@ class PinsController < ApplicationController
     end
     
     def pin_params
-      params.require(:pin).permit(:description, :user_id)
+      params.require(:pin).permit(:description, :image)
     end
 end
